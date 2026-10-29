@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Intro logo DIGITAL PRO</title>
+<style>
+  :root { --bg:#04060c; --white:#f2f2ef; --blue:#1f6bff; --teal:#1fb5a8; --violet:#5b3ca8; }
+  html,body { margin:0; width:1920px; height:1080px; overflow:hidden; background:var(--bg); font-family:Bahnschrift,"Segoe UI",Arial,sans-serif; }
+  svg#bg { position:absolute; inset:0; }
+  svg#logo { position:absolute; left:360px; top:290px; width:1200px; height:500px; overflow:visible; }
+  .w { font-weight:700; fill:var(--white); }
+</style>
+</head>
+<body>
+<svg id="bg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="gcg"><stop offset="0" stop-color="#0a4fd0" stop-opacity=".75"/><stop offset="1" stop-color="#0a4fd0" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gvg"><stop offset="0" stop-color="#5b3ca8" stop-opacity=".6"/><stop offset="1" stop-color="#5b3ca8" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#2a63c8" stroke-opacity=".12"/></pattern>
+  </defs>
+  <circle id="gv" cx="1560" cy="120" r="520" fill="url(#gvg)" opacity="0"/>
+  <circle id="gc" cx="960" cy="540" r="470" fill="url(#gcg)" opacity="0"/>
+  <circle cx="960" cy="540" r="440" fill="url(#grid)" opacity=".9"/>
+  <circle class="ring" cx="960" cy="540" r="440" fill="none" stroke="#3a5a9a" stroke-opacity=".5" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+  <circle class="ring2" cx="960" cy="540" r="540" fill="none" stroke="#1fb5a8" stroke-opacity=".6" stroke-width="2" stroke-dasharray="8 8" opacity="0"/>
+  <circle class="ring" cx="960" cy="540" r="640" fill="none" stroke="#3a5a9a" stroke-opacity=".4" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+</svg>
+
+<svg id="logo" viewBox="0 0 640 270" xmlns="http://www.w3.org/2000/svg">
+  <g id="word">
+    <text class="w ch" x="0"   y="152" font-size="158" textLength="64"  lengthAdjust="spacingAndGlyphs">D</text>
+    <text class="w ch" x="74"  y="152" font-size="158" textLength="22"  lengthAdjust="spacingAndGlyphs">I</text>
+    <text class="w ch" x="106" y="152" font-size="158" textLength="82"  lengthAdjust="spacingAndGlyphs">G</text>
+    <text class="w ch" x="198" y="152" font-size="158" textLength="22"  lengthAdjust="spacingAndGlyphs">I</text>
+    <text class="w ch" x="230" y="152" font-size="158" textLength="70"  lengthAdjust="spacingAndGlyphs">T</text>
+    <g id="a">
+      <path d="M318 152 L368 52 L418 152" fill="none" stroke="#1f6bff" stroke-width="34" stroke-linejoin="miter"/>
+    </g>
+    <g id="arrow">
+      <path d="M372 62 L420 14" fill="none" stroke="#1f6bff" stroke-width="20"/>
+      <polygon points="392,0 452,-6 446,54" fill="#1f6bff"/>
+    </g>
+    <text class="w ch" x="440" y="152" font-size="158" textLength="62"  lengthAdjust="spacingAndGlyphs">L</text>
+  </g>
+  <g id="pro">
+    <rect id="l1" x="10" y="208" width="140" height="5" fill="#1f6bff" style="transform-box:fill-box;transform-origin:100% 50%"/>
+    <text id="protxt" x="251" y="252" font-size="76" font-weight="700" fill="#1f6bff" text-anchor="middle" textLength="150" lengthAdjust="spacingAndGlyphs">PRO</text>
+    <rect id="l2" x="352" y="208" width="140" height="5" fill="#1f6bff" style="transform-box:fill-box;transform-origin:0% 50%"/>
+  </g>
+</svg>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  const tl = gsap.timeline({ paused:true });
+  gsap.set(".ch", { opacity:0, y:60 });
+  gsap.set("#a", { opacity:0, y:60 });
+  gsap.set("#arrow", { opacity:0, x:-30, y:40 });
+  gsap.set("#protxt", { opacity:0, y:20 });
+  gsap.set(["#l1","#l2"], { scaleX:0 });
+  tl.to("#gc", { opacity:1, duration:1.0, ease:"power2.out" }, 0)
+    .to("#gv", { opacity:1, duration:1.4, ease:"power2.out" }, 0.1)
+    .to(".ring", { strokeDashoffset:0, duration:1.4, ease:"power2.inOut", stagger:.15 }, 0.1)
+    .to(".ring2", { opacity:1, duration:1.0 }, 0.3)
+    .to(".ch", { opacity:1, y:0, duration:.55, ease:"back.out(1.6)", stagger:.09 }, 0.4)
+    .to("#a", { opacity:1, y:0, duration:.55, ease:"back.out(1.6)" }, 0.75)
+    .to("#arrow", { opacity:1, x:0, y:0, duration:.5, ease:"power3.out" }, 1.15)
+    .to(["#l1","#l2"], { scaleX:1, duration:.5, ease:"power2.out" }, 1.45)
+    .to("#protxt", { opacity:1, y:0, duration:.45, ease:"power2.out" }, 1.55)
+    .to("#logo", { scale:1.035, transformOrigin:"50% 50%", duration:.5, ease:"sine.inOut", yoyo:true, repeat:1 }, 1.9)
+    .to("body", { opacity:0, duration:.35, ease:"power1.in" }, 2.65);
+  window.__duration = 3.0;
+  window.__seek = t => tl.time(t);
+  window.__seek(0);
+</script>
+</body>
+</html>
